@@ -1,0 +1,204 @@
+<div id="main_content" style="width: 40em;">
+    <p style="text-align: center;">
+        <img style="max-width: 160px; max-height: 200px;" src="https://ryanchausse.com/logo/unisi_logo.jpg" alt="University of Siena logo" />
+    </p>
+
+    <h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; line-height: 28.0px; font: 24.0px Times; color: #000000; -webkit-text-stroke: #000000">
+        <span class="s1">Questionnaire and Consent to Participate</span>
+    </h1>
+    <p>
+        This experiment asks you to rate conversations in English on a scale of 1-7. It will take approximately 20 minutes.
+        <br /><br />
+        After entering your information on this page, there will be a practice session where you can become familiar with the rating system. Then, the real experiment will begin.
+        <br /><br />
+        After the experiment, we will ask you to give us some feedback about your experience with the experiment.
+        <br /><br />
+        All data collected will be anonymized.
+    </p>
+
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>
+                <input name="name" type="text" size="30" class="obligatory" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label class="error" for="name"></label>
+            </td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td>
+                <input name="age" type="text" size="30" class="obligatory" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label class="error" for="age"></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">Are you a native (mother tongue) English speaker?</td>
+            <td>
+                <input name="EngN" type="radio" value="yes" class="obligatory" id="EngNY" />
+                <label for="EngNY">Yes</label>
+                <input name="EngN" type="radio" value="no" id="EngNN"/>
+                <label for="EngNN">No</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <i>(If you are a native speaker, you can click N/A for the following 4 questions.)</i>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><label class="error" for="EngN"></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">What level of English do you have?</td>
+            <td>
+                <input name="EngL" type="radio" value="A1-A2" class="obligatory" id="EngLA" />
+                <label for="EngLA">Low (A1-A2)</label>
+                <br />
+                <input name="EngL" type="radio" value="B1-B2" id="EngLB"/>
+                <label for="EngLB">Intermediate (B1-B2)</label>
+                <br />
+                <input name="EngL" type="radio" value="C1-C2" id="EngLC"/>
+                <label for="EngLC">Advanced (C1-C2)</label>
+                <br />
+                <input name="EngL" type="radio" value="Nat" id="EngLNat"/>
+                <label for="EngLNat">N/A</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">
+                <label class="error" for="EngL"></label>
+                Please give details on your history of English learning (if you have a certification of your level, what level the most recent class you took is, where and when you took it):
+            </td>
+            <td>
+                <div style="float:right;">
+                    <textarea name="EngHist" rows="5" cols="40"></textarea>
+                    <br />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">At what age did you begin learning English?</td>
+            <td>
+                <input name="AoA" type="radio" value="0-4" class="obligatory" id="AoA04" />
+                <label for="AoA04">0-4</label>
+                <br />
+                <input name="AoA" type="radio" value="5-10" id="AoA510"/>
+                <label for="AoA510">5-10</label>
+                <br />
+                <input name="AoA" type="radio" value="10-13" id="AoA1013"/>
+                <label for="AoA1013">10-13</label>
+                <br />
+                <input name="AoA" type="radio" value="14+" id="EngLNat"/>
+                <label for="AoA14">14+</label>
+                <br />
+                <input name="AoA" type="radio" value="NA" id="AoANA"/>
+                <label for="AoANA">N/A</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><label class="error" for="AoA"></label></td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">Have you spent considerable time (more than 4 months) in an English speaking country?</td>
+            <td>
+                <input name="EngC" type="radio" value="yes" class="obligatory" id="EngCY" />
+                <label for="EngCY">Yes</label>
+                <br />
+                <input name="EngC" type="radio" value="no" id="EngCN"/>
+                <label for="EngCN"> No</label>
+                <br />
+                <input name="EngC" type="radio" value="NA" id="EngCNA"/>
+                <label for="EngCNA">N/A</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><label class="error" for="EngC"></label></td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">
+                Select which types of English activities you have engaged in or used in the last <b>two years</b> (you can select multiple):
+            </td>
+            <td>
+                <br />
+                <input type="checkbox" name="EngAct" id="EngAct1" />
+                <label for="EngAct1">traditional classes (lessons with a professor and multiple students)</label>
+                <br /><br />
+                <input type="checkbox" name="EngAct" id="EngAct2" />
+                <label for="EngAct2">private tutoring</label>
+                <br /><br />
+                <input type="checkbox" name="EngAct" id="EngAct3" />
+                <label for="EngAct3">language learning technology (mobile app/website)</label>
+                <br /><br />
+                <input type="checkbox" name="EngAct" id="EngAct4" />
+                <label for="EngAct4">social media in English (twitter/reddit/youtube/facebook)</label>
+                <br /><br />
+                <input type="checkbox" name="EngAct" id="EngAct5" />
+                <label for="EngAct5">in-person conversations with native English speakers (friends/colleagues)</label>
+                <br /><br />
+                <input type="checkbox" name="EngAct" id="EngAct6" />
+                <label for="EngAct6">whatsapp/SMS/messaging with native English speakers</label>
+                <br /><br />
+                <input type="checkbox" name="EngAct" id="EngAct7" />
+                <label for="EngAct7">emails with native English speakers (for work/study/social)</label>
+                <br /><br />
+                <input type="checkbox" name="EngAct" id="EngAct8" />
+                <label for="EngAct8">watching tv/movies or listening to music, podcasts, or radio in English</label>
+                <br /><br />
+                <input type="checkbox" name="EngAct" id="EngAct9" />
+                <label for="EngAct9">reading books in English</label>
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <p>
+        <input type="checkbox" class="obligatory" name="consent" id="consentcx" />
+        <label for="consentcx"> I consent to having my data recorded according to the Italian law n. 675 of 31/12/96 on the protection of personal data, for the use for scientific purposes of the data relating to you, collected for this study and their possible publication anonymously in scientific journals. Participation in the experiment is voluntary. The data will be treated completely anonymously. Your consent is necessary in order to participate in the experiment.</label>
+        <label class="error" for="consent"></label>
+    </p>
+    <hr />
+    <p>Next, you will begin a “practice session” where you can become familiar with the rating system. After that, the real experiment will begin. If you decide you do not want to participate, you can close the window and no data will be recorded.</p>
+</div>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+
+<!-- OG SHIT -->
+[TRIAL TYPE, ITEM NUMBER], "AcceptabilityJudgment", {s: {html: ""<div style=\"width: 50em;\"><!–– TRIAL TYPE_LIST NUMBER_OVERT_ATTESTED––><p style=\"text-align: center;\">HTML CONTENT</p></div>"}}],
+[["test", 1], "AcceptabilityJudgment", {s: {html: "<div style=\"width: 50em;\"><!–– test_1_N_N––><p style=\"text-align: center;\">Sarah: Have you and Alex watched the last season of Stranger Things on Netflix? <br> Kelly: No but heard that it was totally crazy! <br> Sarah: I watched the whole thing in like two days because I had to know what happened…</p></div>"}}],
+
+<!-- NEW SHIT -->
+[TRIAL TYPE, ITEM NUMBER], "AcceptabilityJudgment", {s: {html: ""<div style=\"width: 50em;\"><!–– TRIAL TYPE_ITEM_NUMBER_PRON_COND_COND CODE_ATTESTED––><p style=\"text-align: center;\">STIMULUS (HTML)</p></div>"}}],
+[test, 1], "AcceptabilityJudgment", {s: {html: ""<div style=\"width: 50em;\"><!–– trial_type=TEST  item_number=1  pron=I  cond=a  cond_code=Rt.OV  attested=Y  ––><p style=\"text-align: center;\">STIMULUS (HTML)</p></div>"}}],
+
+</body>
+</html>

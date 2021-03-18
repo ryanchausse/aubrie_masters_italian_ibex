@@ -1,0 +1,22 @@
+<div style="width: 40em;">
+  <p style="text-align: center;">
+    <img style="max-width: 160px; max-height: 200px;" src="https://ryanchausse.com/logo/unisi_logo.jpg" alt="University of Siena logo" />
+  </p>
+
+  <h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; line-height: 28.0px; font: 24.0px Times; color: #000000; -webkit-text-stroke: #000000">
+    <span class="s1">Feedback</span>
+  </h1>
+
+  <p>
+    Please provide us with some feedback about your experience. You may or may not have seen these conversations during your experiment.
+    <br />
+    How do you interpret the space ("__") in this sentence? Select your first intuition. There's no correct answer.
+  </p>
+
+  <p>
+    If you'd like to include any other notes to help us understand your results, such as difficulties you had or notes about what you were thinking during the experiment, please include them here. We are very happy to hear anything you'd like to share about your experience!
+  </p>
+
+  <p>
+    <textarea name="fdbkgen" rows="5" cols="40"></textarea>
+  </p>
