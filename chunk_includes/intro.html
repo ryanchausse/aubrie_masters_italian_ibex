@@ -40,21 +40,46 @@
             </td>
         </tr>
         <tr>
-            <td style="vertical-align: top;">Are you a native (mother tongue) English speaker?</td>
+            <td style="vertical-align: top;">Are you a native (mother tongue) Italian speaker?</td>
             <td>
                 <input name="EngN" type="radio" value="yes" class="obligatory" id="EngNY" />
                 <label for="EngNY">Yes</label>
+                <br />
                 <input name="EngN" type="radio" value="no" id="EngNN"/>
                 <label for="EngNN">No</label>
             </td>
         </tr>
         <tr>
-            <td colspan="2">
-                <i>(If you are a native speaker, you can click N/A for the following 4 questions.)</i>
+            <td colspan="2"><label class="error" for="EngN"></label>
             </td>
         </tr>
         <tr>
-            <td colspan="2"><label class="error" for="EngN"></label>
+            <td style="vertical-align: top;">
+                Did you start learning a language other than Italian before age 14 and are able to speak it with an intermediate or advanced level of fluency today?
+            </td>
+            <td>
+                <br />
+                <input name="bilingual" type="radio" value="yes" class="obligatory" id="bilingual_yes" />
+                <label for="bilingual_yes">Yes</label>
+                <br />
+                <input name="bilingual" type="radio" value="no" id="bilingual_no"/>
+                <label for="bilingual_no">No</label>
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td><br /><br /></td>
+            <td><br /><br /></td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">
+                If so, which language(s)?
+            </td>
+            <td>
+                <div style="margin-left: 10px;">
+                    <textarea name="bilingual_languages" rows="5" cols="40"></textarea>
+                    <br />
+                </div>
             </td>
         </tr>
         <tr>
@@ -73,9 +98,6 @@
                 <br />
                 <input name="EngL" type="radio" value="C1-C2" id="EngLC"/>
                 <label for="EngLC">Advanced (C1-C2)</label>
-                <br />
-                <input name="EngL" type="radio" value="Nat" id="EngLNat"/>
-                <label for="EngLNat">N/A</label>
             </td>
         </tr>
         <tr>
@@ -89,7 +111,7 @@
                 Please give details on your history of English learning (if you have a certification of your level, which level the most recent class you took is, where and when you took the English course):
             </td>
             <td>
-                <div style="float:right;">
+                <div style="margin-left: 10px;">
                     <textarea name="EngHist" rows="5" cols="40"></textarea>
                     <br />
                 </div>
@@ -114,9 +136,6 @@
                 <br />
                 <input name="AoA" type="radio" value="14+" id="AoA14"/>
                 <label for="AoA14">14+</label>
-                <br />
-                <input name="AoA" type="radio" value="NA" id="AoANA"/>
-                <label for="AoANA">N/A</label>
             </td>
         </tr>
         <tr>
@@ -135,9 +154,6 @@
                 <br />
                 <input name="EngC" type="radio" value="no" id="EngCN"/>
                 <label for="EngCN"> No</label>
-                <br />
-                <input name="EngC" type="radio" value="NA" id="EngCNA"/>
-                <label for="EngCNA">N/A</label>
             </td>
         </tr>
         <tr>

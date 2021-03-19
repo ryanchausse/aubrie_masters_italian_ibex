@@ -85,12 +85,12 @@ df = pd.read_excel(excel_local_path, sheet_name=excel_sheet_name, header=0, usec
 print(df)
 
 # Original, working excel formula for json column:
-# =CHAR(91)&CHAR(91)&""""&A2&""""&", "&B2&CHAR(93)&", ""AcceptabilityJudgment"", {s: {html: ""<div style=\""width: 50em;\""><!––  trial_type="&A2&"  item_number="&B2&"  pron="&E2&"  cond="&F2&"  cond_code="&D2&"  attested="&K2&"  ––><p style=\""text-align: center;\"" hidden>"&SUBSTITUTE(H2,CHAR(10),"<br \> ")&"</p><center><img style=\""text-align:center;\"" src=\""https://ryanchausse.com/aubrie_masters/images/conversation_pics/"&B2&"_"&C2&".png\"" alt=\""" & SUBSTITUTE(H2,CHAR(10),"<br \> ") & " " & I2 & " " & J2 & "\"" /></center></div>""}}],"
+# =CHAR(91)&CHAR(91)&""""&A2&""""&", "&B2&CHAR(93)&", ""AcceptabilityJudgment"", {s: {html: ""<div style=\""width: 50em;\""><!––  trial_type="&A2&"  item_number="&B2&"  pron="&E2&"  cond="&F2&"  cond_code="&D2&"  attested="&K2&"  ––><p style=\""text-align: center;\"" hidden>"&SUBSTITUTE(H2,CHAR(10),"<br \> ")&"</p><center><img style=\""text-align:center;\"" src=\""https://ryanchausse.com/aubrie_masters_italian/images/conversation_pics/"&B2&"_"&C2&".png\"" alt=\""" & SUBSTITUTE(H2,CHAR(10),"<br \> ") & " " & I2 & " " & J2 & "\"" /></center></div>""}}],"
 
 # Parse df, format as json value that needs to go into example_data.js
-# e.g. [["test", 6], "AcceptabilityJudgment", {s: {html: "<div style=\"width: 50em;\"><!––  trial_type=test  item_number=6  pron=We  cond=b  cond_code=Rt.Null  attested=Y  ––><p style=\"text-align: center;\" hidden>How was the rest of your Saturday?</p><center><img style=\"text-align:center;\" src=\"https://ryanchausse.com/aubrie_masters/images/conversation_pics/6_7.png\" alt=\"How was the rest of your Saturday? Had a nice dinner and then we went to see some live music after we saw the movie with you. \" /></center></div>"}}],
+# e.g. [["test", 6], "AcceptabilityJudgment", {s: {html: "<div style=\"width: 50em;\"><!––  trial_type=test  item_number=6  pron=We  cond=b  cond_code=Rt.Null  attested=Y  ––><p style=\"text-align: center;\" hidden>How was the rest of your Saturday?</p><center><img style=\"text-align:center;\" src=\"https://ryanchausse.com/aubrie_masters_italian/images/conversation_pics/6_7.png\" alt=\"How was the rest of your Saturday? Had a nice dinner and then we went to see some live music after we saw the movie with you. \" /></center></div>"}}],
 # which translates to:
-# [["<<trial.type>>", <<Item.n>>], "AcceptabilityJudgment", {s: {html: "<div style=\"width: 50em;\"><!––  trial_type=<<trial.type>>  item_number=<<Item.n>>  pron=<<Pron>>  cond=<<cond>>  cond_code=<<cond.code>>  attested=<<attested (Y/N)>>  ––><p style=\"text-align: center;\" hidden><<Intro>></p><center><img style=\"text-align:center;\" src=\"https://ryanchausse.com/aubrie_masters/images/conversation_pics/<<Item.n>>_<<list>>.png\" alt=\"<<Intro>> <<Response1>> <<Response2>>\" /></center></div>"}}],
+# [["<<trial.type>>", <<Item.n>>], "AcceptabilityJudgment", {s: {html: "<div style=\"width: 50em;\"><!––  trial_type=<<trial.type>>  item_number=<<Item.n>>  pron=<<Pron>>  cond=<<cond>>  cond_code=<<cond.code>>  attested=<<attested (Y/N)>>  ––><p style=\"text-align: center;\" hidden><<Intro>></p><center><img style=\"text-align:center;\" src=\"https://ryanchausse.com/aubrie_masters_italian/images/conversation_pics/<<Item.n>>_<<list>>.png\" alt=\"<<Intro>> <<Response1>> <<Response2>>\" /></center></div>"}}],
 
 json_to_append = ''
 for index, row in df.iterrows():
@@ -99,7 +99,7 @@ for index, row in df.iterrows():
                              ", \"AcceptabilityJudgment\", {s: {html: \"<div style=\\\"width: 50em;\\\"><!––  trial_type=" + \
                              str(row['trial.type']) + " item_number=" + str(row['Item.n']) + " attested=" + \
                              str(row['attested (Y/N)']) + " ––><p style=\\\"text-align: center;\\\" hidden>" + \
-                             str(row['Intro']) + "</p><center><img style=\\\"text-align:center;\\\" src=\\\"https://ryanchausse.com/aubrie_masters/images/conversation_pics/" + \
+                             str(row['Intro']) + "</p><center><img style=\\\"text-align:center;\\\" src=\\\"https://ryanchausse.com/aubrie_masters_italian/images/conversation_pics/" + \
                              str(row['Item.n']) + "_" + str(row['list']) + ".png\\\" alt=\\\"" + \
                              (str(row['Intro']) if row['Intro'] and str(row['Intro']) != 'nan' else '') + " " + \
                              (str(row['Response1']) if row['Response1'] and str(row['Response1']) != 'nan' else '') + " " + \
@@ -111,7 +111,7 @@ for index, row in df.iterrows():
                              str(row['trial.type']) + " item_number=" + str(int(row['Item.n'])) + " list_number=" + str(int(row['list'])) + " pron=" + str(row['Pron']) + \
                              " cond=" + str(row['cond']) + " cond_code=" + str(row['cond.code']) + " attested=" + \
                              str(row['attested (Y/N)']) + " ––><p style=\\\"text-align: center;\\\" hidden>" + \
-                             str(row['Intro']) + "</p><center><img style=\\\"text-align:center;\\\" src=\\\"https://ryanchausse.com/aubrie_masters/images/conversation_pics/" + \
+                             str(row['Intro']) + "</p><center><img style=\\\"text-align:center;\\\" src=\\\"https://ryanchausse.com/aubrie_masters_italian/images/conversation_pics/" + \
                              str(int(row['Item.n'])) + "_" + str(int(row['list'])) + ".png\\\" alt=\\\"" + \
                              (str(row['Intro']) if row['Intro'] and str(row['Intro']) != 'nan' else '') + " " + \
                              (str(row['Response1']) if row['Response1'] and str(row['Response1']) != 'nan' else '') + " " + \
@@ -191,7 +191,7 @@ print('Done with sync, moving on to image gathering and upload to ryanchausse.co
 #
 # # 1. Create unique filename in the format '<item number>_<list number>'
 # # 2. Gather image using https://www.fakewhats.com/generator from Intro, Response 1, and Response2 columns
-# # 3. Upload image to sftp://ryanchausse.com/aubrie_masters/images/
+# # 3. Upload image to sftp://ryanchausse.com/aubrie_masters_italian/images/
 #
 # for index, row in df.iterrows():
 #     # Selenium to scrape the page, enter input data
