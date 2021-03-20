@@ -94,13 +94,15 @@ print(df)
 
 json_to_append = ''
 for index, row in df.iterrows():
+    # if type(row['Item.n']) != str:
+    #     continue
     if str(row['trial.type']) == "filler" or str(row['trial.type']) == "practice":
         row_to_json_string = "[\"" + str(row['trial.type']) + "\" " \
                              ", \"AcceptabilityJudgment\", {s: {html: \"<div style=\\\"width: 50em;\\\"><!––  trial_type=" + \
                              str(row['trial.type']) + " item_number=" + str(row['Item.n']) + " attested=" + \
                              str(row['attested (Y/N)']) + " ––><p style=\\\"text-align: center;\\\" hidden>" + \
                              str(row['Intro']) + "</p><center><img style=\\\"text-align:center;\\\" src=\\\"https://ryanchausse.com/aubrie_masters_italian/images/conversation_pics/" + \
-                             str(row['Item.n']) + "_" + str(row['list']) + ".png\\\" alt=\\\"" + \
+                             str(row['Item.n']) + "_filler.png\\\" alt=\\\"" + \
                              (str(row['Intro']) if row['Intro'] and str(row['Intro']) != 'nan' else '') + " " + \
                              (str(row['Response1']) if row['Response1'] and str(row['Response1']) != 'nan' else '') + " " + \
                              (str(row['Response2']) if row['Response2'] and str(row['Response2']) != 'nan' else '') + \
@@ -179,82 +181,87 @@ time.sleep(5)
 driver.close()
 driver.quit()
 
-print('Done with sync, moving on to image gathering and upload to ryanchausse.com')
-
-# Read experimental data, print to terminal
-df = pd.read_excel(excel_local_path, sheet_name=excel_sheet_name, header=0,
-                   usecols=excel_column_range, nrows=excel_number_of_rows)
-# Automate this eventually using pandas functions, e.g.:
-# count_row = df.shape[0]  # Gives number of rows
-# count_col = df.shape[1]  # Gives number of columns
-print(df)
-
-# 1. Create unique filename in the format '<item number>_<list number>'
-# 2. Gather image using https://www.fakewhats.com/generator from Intro, Response 1, and Response2 columns
-# 3. Upload image to sftp://ryanchausse.com/aubrie_masters_italian/images/
-
-for index, row in df.iterrows():
-    # Selenium to scrape the page, enter input data
-    driver = webdriver.Firefox()
-    driver.get('https://www.fakewhats.com/generator')
-    time.sleep(1)
-    wait_for_loading_div_gone = WebDriverWait(driver, timeout=10).until(
-        ec.invisibility_of_element_located(
-            (By.XPATH, '//a[contains(@class,"loader")]')
-        )
-    )
-    print('Past loader visibility check for ' + str(row['Intro']))
-
-    # Enter message text
-    message_propername_element = driver.find_element_by_id("name")
-    # message_propername_element.send_keys(str(row['Proper.Name1']))
-    driver.execute_script("document.getElementById('name').value='" + str(row['Proper.Name1']) + "'")
-    message_propername_element.send_keys(Keys.RETURN)
-    time.sleep(1)
-    message_link_element = driver.find_element_by_xpath('//a[contains(@href,"#panel4")]')
-    message_link_element.click()
-    time.sleep(1)
-
-    message_textarea_element = driver.find_element_by_id("message-text")
-    message_textarea_element.send_keys(str(row['Intro']))
-    message_add_to_conversation_element = driver.find_element_by_css_selector(".sendMessage")
-    message_add_to_conversation_element.click()
-    time.sleep(1)
-    if row['Response1'] and str(row['Response1']) != 'nan':
-        message_textarea_element.clear()
-        switch_speaker_button_element = driver.find_element_by_css_selector("label[for='green-message']")
-        switch_speaker_button_element.click()
-        time.sleep(1)
-        message_textarea_element.send_keys(str(row['Response1']))
-        if row['Response2'] and str(row['Response2']) != 'nan':
-            time.sleep(1)
-            message_textarea_element.send_keys(' ' + str(row['Response2']))
-            time.sleep(1)
-        message_add_to_conversation_element.click()
-        time.sleep(1)
-
-    download_button_element = driver.find_element_by_css_selector("a.line-button-white")
-    download_button_element.click()
-    time.sleep(4)
-
-    # get the image source
-    # Handle filler images (int type for list number will error)
-    imgfilename = str(int(row['Item.n'])) + "_" + str(int(row['list'])) + '.png'
-    print('imgfilename ' + imgfilename)
-    imgsrc = driver.find_element_by_css_selector('img').get_attribute('src')
-    imgdata = imgsrc.replace('data:image/png;base64,', '')
-
-    # download
-    with open(local_dir + '/' + imgfilename, 'wb') as fh:
-        fh.write(base64.b64decode(imgdata))
-
-    time.sleep(1)
-    driver.close()
-    driver.quit()
-    time.sleep(1)
-    # upload to remote server
-    cnopts = pysftp.CnOpts(knownhosts='./known_hosts')
-    with pysftp.Connection(sftp_domain, username=ssh_login_name, password=ssh_password, cnopts=cnopts) as sftp:
-        sftp.put_r(local_dir, sftp_dir)
+# print('Done with sync, moving on to image gathering and upload to ryanchausse.com')
+#
+# # Read experimental data, print to terminal
+# df = pd.read_excel(excel_local_path, sheet_name=excel_sheet_name, header=0,
+#                    usecols=excel_column_range, nrows=excel_number_of_rows)
+# # Automate this eventually using pandas functions, e.g.:
+# # count_row = df.shape[0]  # Gives number of rows
+# # count_col = df.shape[1]  # Gives number of columns
+# print(df)
+#
+# # 1. Create unique filename in the format '<item number>_<list number>'
+# # 2. Gather image using https://www.fakewhats.com/generator from Intro, Response 1, and Response2 columns
+# # 3. Upload image to sftp://ryanchausse.com/aubrie_masters_italian/images/
+#
+# for index, row in df.iterrows():
+#     # if type(row['Item.n']) != str:
+#     #     continue
+#     # Selenium to scrape the page, enter input data
+#     driver = webdriver.Firefox()
+#     driver.get('https://www.fakewhats.com/generator')
+#     time.sleep(1)
+#     wait_for_loading_div_gone = WebDriverWait(driver, timeout=10).until(
+#         ec.invisibility_of_element_located(
+#             (By.XPATH, '//a[contains(@class,"loader")]')
+#         )
+#     )
+#     print('Past loader visibility check for ' + str(row['Intro']))
+#
+#     # Enter message text
+#     message_propername_element = driver.find_element_by_id("name")
+#     # message_propername_element.send_keys(str(row['Proper.Name1']))
+#     driver.execute_script("document.getElementById('name').value='" + str(row['Proper.Name1']) + "'")
+#     message_propername_element.send_keys(Keys.RETURN)
+#     time.sleep(1)
+#     message_link_element = driver.find_element_by_xpath('//a[contains(@href,"#panel4")]')
+#     message_link_element.click()
+#     time.sleep(1)
+#
+#     message_textarea_element = driver.find_element_by_id("message-text")
+#     message_textarea_element.send_keys(str(row['Intro']))
+#     message_add_to_conversation_element = driver.find_element_by_css_selector(".sendMessage")
+#     message_add_to_conversation_element.click()
+#     time.sleep(1)
+#     if row['Response1'] and str(row['Response1']) != 'nan':
+#         message_textarea_element.clear()
+#         switch_speaker_button_element = driver.find_element_by_css_selector("label[for='green-message']")
+#         switch_speaker_button_element.click()
+#         time.sleep(1)
+#         message_textarea_element.send_keys(str(row['Response1']))
+#         if row['Response2'] and str(row['Response2']) != 'nan':
+#             time.sleep(1)
+#             message_textarea_element.send_keys(' ' + str(row['Response2']))
+#             time.sleep(1)
+#         message_add_to_conversation_element.click()
+#         time.sleep(1)
+#
+#     download_button_element = driver.find_element_by_css_selector("a.line-button-white")
+#     download_button_element.click()
+#     time.sleep(4)
+#
+#     # get the image source
+#     # Handle filler images (int type for list number will error)
+#     if type(row['Item.n']) != str:
+#         imgfilename = str(int(row['Item.n'])) + "_" + str(int(row['list'])) + '.png'
+#     else:
+#         imgfilename = row['Item.n'] + '_filler.png'
+#     print('imgfilename ' + imgfilename)
+#     imgsrc = driver.find_element_by_css_selector('img').get_attribute('src')
+#     imgdata = imgsrc.replace('data:image/png;base64,', '')
+#
+#     # download
+#     with open(local_dir + '/' + imgfilename, 'wb') as fh:
+#         fh.write(base64.b64decode(imgdata))
+#
+#     time.sleep(1)
+#     driver.close()
+#     driver.quit()
+#     time.sleep(1)
+#     # upload to remote server
+#     cnopts = pysftp.CnOpts(knownhosts='./known_hosts')
+#     with pysftp.Connection(sftp_domain, username=ssh_login_name, password=ssh_password, cnopts=cnopts) as sftp:
+#         sftp.put_r(local_dir, sftp_dir)
 
 print("Done.")
