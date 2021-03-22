@@ -74,7 +74,7 @@ modified_recently = dt_box_modified > dt_local_modified
 # Write file content to file, else exit(0)
 if not modified_recently:
     print('No change to file. Exiting...')
-    #exit(0)
+    exit(0)
 
 with open(excel_local_path, 'wb') as open_file:
     client.with_shared_link(box_file_shared_link, box_shared_link_password).file(box_file_id).download_to(open_file)
