@@ -197,8 +197,7 @@ print(df)
 
 for index, row in df.iterrows():
     print(str(row['Item.n']) + ' ' + str(int(row['list'])))
-    if not (str(row['Item.n']) == '21' and str(int(row['list'])) == '2'):
-        # or not (str(row['Item.n']) == '14' and str(int(row['list'])) == '4'):
+    if not (str(row['Item.n']) == '14' and str(int(row['list'])) == '4'):
         print('skip')
         continue
     # if type(row['Item.n']) != str:
