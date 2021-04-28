@@ -7,3 +7,5 @@ openpyxl
 requests
 boxsdk[jwt]
 gitpython
+matplotlib
+scipy
