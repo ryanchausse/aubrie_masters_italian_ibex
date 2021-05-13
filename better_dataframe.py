@@ -69,7 +69,7 @@ with open(results_location) as f:
         if ',Form,2,0,intro,NULL,EngC,' in line:
             user_results['time_in_english_country'] = line.split('EngC,')[-1].strip()
         if ',Form,2,0,intro,NULL,AoA,' in line:
-            user_results['age_of_acquisition'] = line.split('AoA,')[-1].strip()
+            user_results['age_of_acquisition'] = "=\"" + line.split('AoA,')[-1].strip() + "\""
         if ',Form,2,0,intro,NULL,EngHist,' in line:
             user_results['english_history'] = line.split('EngHist,')[-1].strip()
         if ',Form,5,0,feedback,NULL,fdbk_problems_difficulties,' in line:
