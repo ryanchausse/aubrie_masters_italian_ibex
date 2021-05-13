@@ -160,7 +160,7 @@ ordered_data_frame = data_frame[[
     'traditional_classes', 'private_tutoring', 'language_learning_tech',
     'social_media', 'video_games', 'in_person_conversations',
     'private_messaging', 'emails_with_native_english', 'media_in_english',
-    'media_in_english', 'books_in_english', 'problems_difficulties',
+    'books_in_english', 'problems_difficulties',
     'experiment_about', 'other_notes_questions', 'above_ability',
     'response_a1', 'response_a2', 'response_a3', 'response_a4',
     'response_b1', 'response_b2', 'response_b3', 'response_b4',
